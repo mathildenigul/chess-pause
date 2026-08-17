@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Data & models (too large/should not be committed)
+data/*
+!data/.gitkeep
+models/*.h5
+models/*.pt
+models/*.pth
+!models/.gitkeep
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
