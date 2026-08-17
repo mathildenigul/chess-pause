@@ -1,0 +1,6 @@
+opencv-python
+numpy
+python-chess
+tensorflow
+streamlit
+matplotlib
