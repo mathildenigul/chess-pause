@@ -1,4 +1,4 @@
-# Chess Continue
+# Chess Pause
 
 Take a screenshot of a chess position mid-game (e.g. from a masters' game you're
 watching) and get an AI-suggested next move — or switch to practice mode and keep
