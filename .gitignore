@@ -22,3 +22,9 @@ Thumbs.db
 
 # Env / secrets
 .env
+
+# Model weights
+models/*.keras
+
+# Dataset
+archive/
