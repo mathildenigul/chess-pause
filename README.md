@@ -2,6 +2,10 @@
 
 Take a screenshot of a chess position mid-game (e.g. from a masters' game you're watching) and either practice what move you would do next without suggestions or get an AI-suggested next move.
 
+## Scope
+
+Digital board screenshots (lichess, chess.com, diagram images). Not using physical board photos because they are a known extension that require additional work or perspective correction and also a different training dataset.
+
 ## Status: just started
 
 This project is a work in progress, built solo to practice an end-to-end ML
@@ -39,3 +43,9 @@ pip install -r requirements.txt
 - [ ] Board detection + square extraction
 - [ ] FEN reconstruction + engine integration
 - [ ] Minimal interface with practice mode
+
+## Future work
+- Supporting physical board photos, that will require perspective correction and a dataset of 3D piece images captured at different angles
+- Empty square detection as a 7th class, because currently the classifier only knows the 6 piece types
+- Fine-tuning the frozen MobileNetV2 base on chess-specific data for potentially higher accuracy
+
