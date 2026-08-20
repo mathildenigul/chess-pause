@@ -6,11 +6,21 @@ Take a screenshot of a chess position mid-game (e.g. from a masters' game you're
 
 Digital board screenshots (lichess, chess.com, diagram images). Not using physical board photos because they are a known extension that require additional work or perspective correction and also a different training dataset.
 
+### Why these scoping choices
+
+- Assumes a clean, roughly top-down screenshot (not a photo at an angle) — this keeps board detection tractable in a short timeframe
+- Uses an existing chess engine (Stockfish) rather than building one — the interesting part of this project is the vision pipeline, not reimplementing a solved problem
+- Piece classifier is trained on an existing public dataset via transfer learning, not from scratch
+
 ## Status: just started
 
 This project is a work in progress, built solo to practice an end-to-end ML
 pipeline: computer vision, a trained classifier, and integrating an external
 engine.
+
+### Known limitation, handled
+
+Board detection assumes eithe a screenshot with surrounding UI (board is found through edge/contour detection) or an already cropped voard image (it is detected through a board-vs-image are size heuristis and used as a fallback). One limitation now is that the detection for larger images with a small board is more difficult. To avoid such cases a warning was added for large images to crop the images closer to just the board fits.
 
 ## Planned pipeline
 
@@ -21,11 +31,6 @@ engine.
 5. **Practice mode**: continue playing from that position yourself, with
    python-chess validating legal moves, no suggestions shown
 
-## Why these scoping choices
-
-- Assumes a clean, roughly top-down screenshot (not a photo at an angle) — this keeps board detection tractable in a short timeframe
-- Uses an existing chess engine (Stockfish) rather than building one — the interesting part of this project is the vision pipeline, not reimplementing a solved problem
-- Piece classifier is trained on an existing public dataset via transfer learning, not from scratch
 
 ## Setup
 
