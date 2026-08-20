@@ -26,7 +26,26 @@ def find_board(image_path):
     
     return board
 
+def slice_board(board):
+    height, width, _ = board.shape
+    square_h = height // 8
+    square_w = width // 8
+    
+    squares = []
+    for r in range(8):
+        for c in range(8):
+            y = r * square_h
+            x = c * square_w
+            square = board[y:y + square_h, x:x + square_w]
+            squares.append((r, c, square))
+        
+    return squares
+    
 if __name__ == "__main__":
-    board = find_board("test_board3.png")
-    cv2.imwrite("test_board_cropped3.png", board)
+    board = find_board("test_board1.jpg")
+    cv2.imwrite("test_board_cropped1.png", board)
     print(f"Board found, size: {board.shape}")
+    squares = slice_board(board)
+    print(f"Has {len(squares)} squares")
+    for i, (r,c, square) in enumerate(squares[:5]):
+        cv2.imwrite(f"debug_square_{i}.png", square)

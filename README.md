@@ -45,7 +45,7 @@ pip install -r requirements.txt
 - [x] Project scaffolding and repo setup
 - [x] Data prepared with 80/20 train/ validation split
 - [x] Piece classifier trained, obtained 75% validation accuracy, with 6 classes, MobileNetV2 transfer learning
-- [ ] Board detection + square extraction
+- [x] Board detection + square extraction
 - [ ] FEN reconstruction + engine integration
 - [ ] Minimal interface with practice mode
 
