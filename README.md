@@ -40,6 +40,27 @@ source .venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
+## Dataset
+
+**Original approach** - Kaggle "chessman image dataset", real photographed pieces caused a train/ inference domin  mismatch: the model performed quite poorly on flat digital board icons, which was the actual use case. It was confirmed through low-confidence predictions on real chess.com/ lichess screenshots (e.g. 47% Pawn vs 37% Queen on an actual queen piece).
+
+**Fix**: generated a synthetic dataset insted by compositing open-source piece icons onto multiple realistic board-square color themes with randomized position/scale. **Uses 4 visually distinct piece styles**, since an early versio trained on a single style (lichess's default) generalized poorly to other sites/themes.
+
+Styles used (`piece_svgs/<style>/`, all from [lichess-org/lila](https://github.com/lichess-org/lila/tree/master/public/piece), used here for a personal, non-commercial, educational project):
+- `cburnett`- Colin M.L. Burnett - GPLv2+
+- `alpha` - Eric Bentzen - free for personal, non-commercial use
+- `fantasy` - MIT
+- `horsey` - cham, michael1241 - CC BY-NC-SA 4.0
+- `staunty` - sadsnake1 - CC BY-NC-SA 4.0
+- `tatiana` - sadsnake1 - CC BY-NC-SA 4.0
+
+chess.com-s own "Neo" piece set is proprietary and not available under as open license, so that is why it is not used irectly here. `staunty`  and `tatiana` were added specifically because they are the closest visual match to chess.com's Neo style among the openly-licensed alternatives.
+
+```bash
+py src/generate_synthetic_data.py   #produces data_synthetic/<Piece>/*.png
+```
+Then point `src/prepare_data.py`'s `SOURCE` constant at `data_synthetic` and re-run the split before retraining with `train_classifier.py`. Neither `data_synthetic/` nor `data/` are committe (see `.gitignore`), both are fully reproucible from `piece_svgs/` and the generator script. 
+
 ## Progress log
 
 - [x] Project scaffolding and repo setup

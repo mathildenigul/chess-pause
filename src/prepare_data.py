@@ -2,7 +2,7 @@ import random
 from pathlib import Path
 import shutil
 
-p = Path("archive/Chessman-image-dataset/Chess")
+p = Path("data_synthetic")
 d = Path("data")
 SPLIT_RATIO = 0.8 #80%train, 20%val
 
