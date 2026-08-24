@@ -24,7 +24,7 @@ def classify_square(square, model, class_names):
 
 if __name__ == "__main__":
     from board_detection import find_board, slice_board
-    board = find_board("test_board_cropped6.png")
+    board = find_board("test_board_cropped2.png")
     squares = slice_board(board)
     #for r, c, square in squares[:64]:
         #empty  = np.std(cv2.cvtColor(square, cv2.COLOR_BGR2GRAY))
