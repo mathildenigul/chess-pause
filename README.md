@@ -20,7 +20,8 @@ engine.
 
 ### Known limitation, handled
 
-Board detection assumes eithe a screenshot with surrounding UI (board is found through edge/contour detection) or an already cropped voard image (it is detected through a board-vs-image are size heuristis and used as a fallback). One limitation now is that the detection for larger images with a small board is more difficult. To avoid such cases a warning was added for large images to crop the images closer to just the board fits.
+Board detection assumes eithe a screenshot with surrounding UI (board is found through edge/contour detection) or an already cropped board image (it is detected through a board-vs-image are size heuristis and used as a fallback). One limitation now is that the detection for larger images with a small board is more difficult. To avoid such cases a warning was added for large images to crop the images closer to just the board fits.
+Also, tested and reliable on boards where each square is roughly 80px(normal full-window screenshots) or larger, small embedded diagrams (<50px) may misclassify, since upscaling the model's 160x160 iput size causes heavy blur. Fixing it would mean training on deliberately low-resolution synthetic examples.
 
 ## Planned pipeline
 
@@ -74,4 +75,4 @@ Then point `src/prepare_data.py`'s `SOURCE` constant at `data_synthetic` and re-
 - Supporting physical board photos, that will require perspective correction and a dataset of 3D piece images captured at different angles
 - Empty square detection as a 7th class, because currently the classifier only knows the 6 piece types
 - Fine-tuning the frozen MobileNetV2 base on chess-specific data for potentially higher accuracy
-
+- Train model on deliberately low-resolution synthetic examples also to be able to classify pieces even on low-resolution images.

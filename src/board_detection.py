@@ -22,6 +22,10 @@ def find_board(image_path):
         print("If this is a full screenshot, try cropping it closer, so just the board fits.")
         print(f"Ratio: {(board_area / image_area):.2f} ")
         return img
+    if board.shape[0] // 8 < 80:
+        print("Warning: board resolution is low.")
+        f"({board.shape[0]}px, {board.shape[0]//8}px per square). "
+        f"Classification may be unreliable below 80px per square."
     board = img[y:y+h, x:x+w]
     
     return board

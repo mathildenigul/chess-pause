@@ -43,8 +43,10 @@ THEMES = [
 ]
 
 PIECE_TO_CLASS = {
-    "P": "Pawn", "N": "Knight", "B": "Bishop",
-    "R": "Rook", "Q": "Queen", "K": "King",
+    "wP": "White_Pawn", "wN": "White_Knight", "wB": "White_Bishop",
+    "wR": "White_Rook", "wQ": "White_Queen", "wK": "White_King",
+    "bP": "Black_Pawn", "bN": "Black_Knight", "bB": "Black_Bishop",
+    "bR": "Black_Rook", "bQ": "Black_Queen", "bK": "Black_King",
 }
 
 
@@ -74,7 +76,7 @@ def generate():
         style_dir = PIECE_DIR / style
         for filename in style_dir.glob("*.png"):
             color_code, piece_code = filename.stem[0], filename.stem[1]
-            class_name = PIECE_TO_CLASS[piece_code]
+            class_name = PIECE_TO_CLASS[f"{color_code}{piece_code}"]
             piece_img = Image.open(filename).convert("RGBA")
 
             class_dir = OUT_DIR / class_name

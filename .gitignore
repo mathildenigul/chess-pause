@@ -8,6 +8,8 @@ venv/
 # Data & models (too large/should not be committed)
 data/*
 !data/.gitkeep
+data_synthetic/
+data_synthetic_split/
 models/*.h5
 models/*.pt
 models/*.pth

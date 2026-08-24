@@ -31,6 +31,12 @@ if __name__ == "__main__":
         #empty, std_dev = is_square_empty(square)
         #print(f"({r}, {c}): std = {std_dev:.1f}, empty = {empty}")  
     model = tf.keras.models.load_model("models/piece_classifier.keras")
-    class_names = ["Bishop", "King", "Knight", "Pawn", "Queen", "Rook"]
-    result = classify_square(squares[0][2], model, class_names)
-    print(f"Square (0,0) classified as: {result}")
+    class_names = ["Black_Bishop", "Black_King", "Black_Knight", "Black_Pawn", "Black_Queen", "Black_Rook",
+                   "White_Bishop", "White_King", "White_Knight", "White_Pawn", "White_Queen", "White_Rook"]
+    for r, c, square in squares:
+        empty, std_dev = is_square_empty(square)
+        if empty:
+            print(f"({r},{c}): empty")
+        else:
+            piece = classify_square(square, model, class_names)
+            print(f"({r},{c}): {piece}")
