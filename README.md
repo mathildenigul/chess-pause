@@ -68,7 +68,7 @@ Then point `src/prepare_data.py`'s `SOURCE` constant at `data_synthetic` and re-
 - [x] Data prepared with 80/20 train/ validation split
 - [x] Piece classifier trained, obtained 75% validation accuracy, with 6 classes, MobileNetV2 transfer learning
 - [x] Board detection + square extraction
-- [ ] FEN reconstruction + engine integration
+- [x] FEN reconstruction + engine integration
 - [ ] Minimal interface with practice mode
 
 ## Future work

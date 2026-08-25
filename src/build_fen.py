@@ -58,5 +58,5 @@ def build_fen(image_path, model_path, class_names, side_to_move = "w"):
 if __name__ == "__main__":
     class_names = ["Black_Bishop", "Black_King", "Black_Knight", "Black_Pawn", "Black_Queen", "Black_Rook",
                    "White_Bishop", "White_King", "White_Knight", "White_Pawn", "White_Queen", "White_Rook"]
-    fen = build_fen("test_board_cropped2.png", "models/piece_classifier.keras", class_names)
+    fen = build_fen("test_board_cropped6.png", "models/piece_classifier.keras", class_names)
     print(fen)
