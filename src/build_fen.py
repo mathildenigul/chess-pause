@@ -1,6 +1,7 @@
 from board_detection import find_board, slice_board
 from classify_squares import classify_square
 import tensorflow as tf
+import cv2
 
 #Mapping the 12 class names to FEN letters
 #Uppercase is white, lowercase is black
@@ -46,8 +47,10 @@ def grid_to_fen(grid):
         rows_as_strings.append(row_string)
     return ("/").join(rows_as_strings)
 
-def build_fen(image_path, model_path, class_names, side_to_move = "w"):
+def build_fen(image_path, model_path, class_names, side_to_move = "w", board_orientation = "White at bottom"):
     board = find_board(image_path)
+    if board_orientation == "Black at bottom":
+        board = cv2.rotate(board, cv2.ROTATE_180)
     squares = slice_board(board)
     model = tf.keras.models.load_model(model_path)
     grid = classify_board(squares, model, class_names)

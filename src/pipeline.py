@@ -1,8 +1,8 @@
 from build_fen import build_fen
 from suggest_move import suggest_move
 
-def analyze_screenshot(image_path, model_path, engine_path, class_names, side_to_move = "w"):
-    fen = build_fen(image_path, model_path, class_names, side_to_move = "w")
+def analyze_screenshot(image_path, model_path, engine_path, class_names, side_to_move = "w", board_orientation = "White at bottom"):
+    fen = build_fen(image_path, model_path, class_names, side_to_move = side_to_move, board_orientation = board_orientation)
     move = suggest_move(fen, engine_path, think_time = 1.0)
     return fen, move
 

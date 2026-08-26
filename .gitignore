@@ -30,4 +30,9 @@ models/*.keras
 
 # Dataset
 archive/
+
+# Chess engine
 engine/
+
+# Streamlit themes
+awesome-streamlit-themes/
