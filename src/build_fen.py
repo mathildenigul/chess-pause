@@ -12,19 +12,17 @@ CLASS_TO_FEN = {
     }
 
 #Turning the 64(r, c, square) tuples into 8x8 grid of FEN letters or None(empty square)
-def classify_board(squares, model, class_names):
-    grid = []
-    rows, cols = 8, 8
-    for _ in range(rows):
-        row = []
-        for _ in range (cols):
-            row.append(None)
-        grid.append(row)
+def classify_board(squares, model, class_names, board_orientation = "White at bottom"):
+    grid = [[None for _ in range(8)] for _ in range(8)]
     for r, c, square in squares:
         piece = classify_square(square, model, class_names)
         if piece == "empty":
             continue #already None there
-        grid[r][c] = CLASS_TO_FEN.get(piece, 0)
+        if board_orientation == "Black at bottom":
+            target_r, target_c = 7 - r, 7 - c
+        else:
+            target_r, target_c = r, c
+        grid[target_r][target_c] = CLASS_TO_FEN.get(piece, 0)
     return grid
 
 def grid_to_fen(grid):
@@ -49,11 +47,9 @@ def grid_to_fen(grid):
 
 def build_fen(image_path, model_path, class_names, side_to_move = "w", board_orientation = "White at bottom"):
     board = find_board(image_path)
-    if board_orientation == "Black at bottom":
-        board = cv2.rotate(board, cv2.ROTATE_180)
     squares = slice_board(board)
     model = tf.keras.models.load_model(model_path)
-    grid = classify_board(squares, model, class_names)
+    grid = classify_board(squares, model, class_names, board_orientation = board_orientation)
     placement = grid_to_fen(grid)
     
     return f"{placement} {side_to_move} - - 0 1"
