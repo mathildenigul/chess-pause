@@ -1,6 +1,20 @@
 # Chess Pause
 
-Take a screenshot of a chess position mid-game (e.g. from a masters' game you're watching) and either practice what move you would do next without suggestions or get an AI-suggested next move.
+Upload a screenshot of a chess position mid-game (e.g. from a masters' game you're watching or a puzzle) and either practice what move you would make next or get an AI-suggested next move.
+
+**Live pipeline:** screenshot -> board detection (OpenCV) -> piece classification (transfer learning CNN, MobileNetV2, 12 classes) -> FEN reconstruction -> Stockfish move suggestion, wrapped in a Streamlit interface with a playable board.
+
+
+## Demo
+
+
+
+## Try it
+
+```bash
+pip install -r requirements.txt
+streamlit run src/app.py
+```
 
 ## Scope
 
