@@ -6,9 +6,9 @@ Upload a screenshot of a chess position mid-game (e.g. from a masters' game you'
 
 
 ## Demo
-<img width="758" height="1033" alt="Demo1" src="https://github.com/user-attachments/assets/e2b66997-9b9f-495c-bb2e-c75b210d53da" />
-<img width="674" height="1059" alt="Demo2" src="https://github.com/user-attachments/assets/f268492c-1a49-4763-9014-ecfb90c29235" />
-<img width="579" height="532" alt="Demo3" src="https://github.com/user-attachments/assets/9d7a8924-8ed9-4731-9588-72b006a1977c" />
+<img width="558" height="833" alt="Demo1" src="https://github.com/user-attachments/assets/e2b66997-9b9f-495c-bb2e-c75b210d53da" />
+<img width="474" height="859" alt="Demo2" src="https://github.com/user-attachments/assets/f268492c-1a49-4763-9014-ecfb90c29235" />
+<img width="379" height="332" alt="Demo3" src="https://github.com/user-attachments/assets/9d7a8924-8ed9-4731-9588-72b006a1977c" />
 
 
 ## Try it
